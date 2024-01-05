@@ -4,7 +4,7 @@ const WebSocket = require("ws");
 
 restartChecks();
 const app_name = "Gabagooler";
-const wss = new WebSocket.Server({ port: 777 });
+const wss = new WebSocket.Server({ port: 443 });
 
 wss.on("connection", ws => {
   console.log(`Client connected!`);
