@@ -29,7 +29,7 @@ const botSwitch = _callback => {
 
     pm2.list(async (err, list) => {
       for (i = 0; i < list.length; i++) {
-        const name = list?.[i].name;
+        const name = list[i].name;
         if (name === app_name) {
           console.log("Current status is " + list[i].pm2_env.status);
           if (list[i].pm2_env.status === "online") {
@@ -75,12 +75,12 @@ function restartChecks() {
 
     pm2.list(async (err, list) => {
       for (i = 0; i < list.length; i++) {
-        const name = list?.[i].name;
+        const name = list[i].name;
         if (name === app_name) {
           console.log("Current status is " + list[i].pm2_env.status);
           const data = await fetch("https://api.kami-x.tk/bot");
           const json = await data.json();
-          if (list[i].pm2_env.status === "online" && json?.status === 0) {
+          if (list[i].pm2_env.status === "online" && json.status === 0) {
             console.log("Changing bot status to online...");
             fetch("https://api.kami-x.tk/bot_status", {
               method: "POST",
@@ -91,7 +91,7 @@ function restartChecks() {
             });
           } else if (
             list[i].pm2_env.status === "stopped" &&
-            json?.status === 1
+            json.status === 1
             ) {
             console.log("Changing bot status to offline...");
             fetch("https://api.kami-x.tk/bot_status", {
