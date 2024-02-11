@@ -78,11 +78,11 @@ function restartChecks() {
         const name = list[i].name;
         if (name === app_name) {
           console.log("Current status is " + list[i].pm2_env.status);
-          const data = await fetch("https://api.kami-x.tk/bot");
+          const data = await fetch("https://api.kami.wtf/bot");
           const json = await data.json();
           if (list[i].pm2_env.status === "online" && json.status === 0) {
             console.log("Changing bot status to online...");
-            fetch("https://api.kami-x.tk/bot_status", {
+            fetch("https://api.kami.wtf/bot_status", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -94,7 +94,7 @@ function restartChecks() {
             json.status === 1
             ) {
             console.log("Changing bot status to offline...");
-            fetch("https://api.kami-x.tk/bot_status", {
+            fetch("https://api.kami.wtf/bot_status", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
